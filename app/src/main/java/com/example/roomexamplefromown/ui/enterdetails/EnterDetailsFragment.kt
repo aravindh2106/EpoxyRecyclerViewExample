@@ -42,10 +42,10 @@ class EnterDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.readAllData.observe(viewLifecycleOwner, Observer {
-            val controller = UserController(it,{selectedUser:User->listItemClick(selectedUser)})
-            binding.recyclerview.setController(controller = controller)
-            binding.recyclerview.requestModelBuild()
+        viewModel.readAllData.observe(viewLifecycleOwner, Observer {data->
+            val controller = UserController()
+            controller.setData(data,{selectedUser:User->listItemClick(selectedUser)})
+            binding.recyclerview.adapter = controller.adapter
         })
     }
 
