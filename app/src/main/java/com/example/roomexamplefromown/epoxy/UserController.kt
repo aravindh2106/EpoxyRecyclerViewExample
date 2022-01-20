@@ -15,7 +15,7 @@ class UserController(
                 id("$index")
                 name(data.name)
                 bio(data.bio)
-                onClick { _ ->ā
+                onClick { _ ->
                     onClick(data)
                 }
             }
